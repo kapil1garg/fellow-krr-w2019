@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 gspread = "*"
+"oauth2client" = "*"
 
 [dev-packages]
 
