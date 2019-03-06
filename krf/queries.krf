@@ -1,0 +1,58 @@
+Things to add:
+  - (academicYear ?person NUUndergradStudent) or (academicYear ?person NUUndergradSenior)
+
+
+;;; Who is similar to me? (General)
+;;; Query: (similarNUPerson USER ?suggestedPerson)
+(<== (similarNUPerson ?person ?suggestedPerson)
+  (academicInterests ?interests ?person)
+  ())
+
+;;; Who is in the same academic program as me?
+;;; Query: (sameAcademicProgram USER ?suggestedPerson)
+(<== (sameAcademicProgram ?person ?suggestedPerson)
+  (studies ?person ?major)
+  (studies ?suggestedPerson ?major))
+
+;;; Who is in the same academic year as me?
+;;; Query: (sameAcademicYear USER ?suggestedPerson)
+(<== (sameAcademicYear ?person ?suggestedPerson)
+  (academicYear ?person ?year)
+  (academicYear ?suggestedPerson ?year))
+
+;;; Who are other students with the same major and same academic year?
+;;; Query: (sameMajorAndYear USER ?suggestedPerson)
+(<== (sameMajorAndYear ?person ?suggestedPerson)
+  (sameAcademicProgram ?person ?suggestedPerson)
+  (sameAcademicYear ?person ?suggestedPerson))
+
+;;; Who will possibly go into the same field of work after graduation?
+;;; Query: (sameFieldOfWork USER ?suggestedPerson)
+(<== (sameFieldOfWork ?person ?suggestedPerson)
+  (hasFutureCareer ?person ?career)
+  (hasFutureCareer ?suggestedPerson ?career))
+
+;;; Who is specialized in program X?
+;;; Query: (personExperiencedWith ?suggestedPerson PROGRAM)
+(<== (personExperiencedWith ?suggestedPerson ?program)
+  (isExperiencedWith ?suggestedPerson ?program))
+
+;;; Who has the same hobbies as me in the same academic year?
+;;; Query: (sameHobbies ?person ?suggestedPerson)
+(<== (sameHobbies ?person ?suggestedPerson)
+  (sameAcademicYear ?person ?suggestedPerson)
+  (enjoysHobby ?person ?hobby)
+  (enjoysHobby ?suggestedPerson ?hobby))
+
+;;; Who is also new to Northwestern?
+;;; Query: (newToNU ?suggestedPerson)
+(<== (newToNU ?suggestedPerson)
+  (academicYear ?suggestedPerson NUUndergradFreshman))
+  ;;; OR
+  (isa ?suggestedPerson NUUndergradFreshman)
+
+;;; What are some events on campus I would be interested in? (Based on Collection type of student)
+;;; Query: (interestingEvents ?event USER)
+(<== (interestingEvents ?event ?person)
+  (eventAudience ?event ?studentType)
+  (isa ?person ?studentType))
