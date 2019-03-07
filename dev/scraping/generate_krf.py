@@ -41,7 +41,7 @@ def main():
         ';;;;;;;;;;;;;; PEOPLE ;;;;;;;;;;;;;;;', people_krf
     ])
 
-    with open('../krf/fellow.krf', 'w') as output_file:
+    with open('../../dist/krf/fellow.krf', 'w') as output_file:
         output_file.write(output_file_content)
 
 
