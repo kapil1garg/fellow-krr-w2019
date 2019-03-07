@@ -21,12 +21,12 @@ class Person(object):
         :return: (string) remapped education year.
         """
         remapping = {
-            'Freshman': 'Undergrad',
-            'Sophomore': 'Undergrad',
-            'Junior': 'Undergrad',
-            'Senior': 'Undergrad',
-            'Masters Student': 'Masters',
-            'PhD Student': 'PhD',
+            'Freshman': 'NUUndergraduate',
+            'Sophomore': 'NUUndergraduate',
+            'Junior': 'NUUndergraduate',
+            'Senior': 'NUUndergraduate',
+            'Masters Student': 'NUMastersStudent',
+            'PhD Student': 'NUPhDStudent',
             'Post-Doc': 'PostDoc'
         }
 
@@ -40,11 +40,11 @@ class Person(object):
         :return: (string) remapped major.
         """
         remapping = {
-            'Computer Science': 'CompSci',
-            'Cognitive Science': 'CogSci',
-            'Masters in AI (MSAI)': 'AI',
+            'Computer Science': 'ComputerScience',
+            'Cognitive Science': 'CognitiveScience',
+            'Masters in AI (MSAI)': 'ArtificialIntelligence',
             'Masters in Robotics (MSR)': 'Robotics',
-            'Masters in Analytics (MSiA)': 'DataScience',
+            'Masters in Analytics (MSiA)': 'Analytics',
             'Other': 'Other'
         }
 
@@ -101,9 +101,9 @@ class Person(object):
         remapping = {
             'Backend web development': 'BackendWeb',
             'Frontend web development': 'FrontendWeb',
-            'Game Development': 'GameDev',
-            'iOS mobile development': 'iOSDev',
-            'Android development': 'AndroidDev',
+            'Game Development': 'GameDevelopment',
+            'iOS mobile development': 'iOSDevelopment',
+            'Android development': 'AndroidDevelopment',
             'Data Science and Machine Learning': 'DataScience',
             'Hardware (e.g. Arduinos; Raspberry Pi; etc.)': 'Hardware'
         }
@@ -176,4 +176,30 @@ class Person(object):
 
     # TODO
     def generate_krf(self):
-        pass
+        output_list = []
+
+        # create entity
+        entity = self.first_name + self.last_name
+        output_list += ['(isa {0:} {1:})'.format(entity, self.year)]
+
+        # add full name
+        output_list += ['(fullName {0:} {1:})'.format(entity, "\"{0:} {1:}\"".format(self.first_name, self.last_name))]
+
+        # add major
+        if self.major != 'Other':
+            output_list += ['(studies {0:} {1:})'.format(entity, self.major)]
+
+        # add academic interests
+        output_list += ['(academicInterest {0:} {1:})'.format(entity, interest) for interest in self.academic_interests]
+
+        # add post grad goal
+        if self.post_grad_goal != 'Other':
+            output_list += ['(hasFutureCareer {0:} {1:})'.format(entity, self.post_grad_goal)]
+
+        # add software experience
+        output_list += ['(isExperiencedWith {0:} {1:})'.format(entity, skill) for skill in self.software_experience]
+
+        # add hobbies
+        output_list += ['(enjoysHobby {0:} {1:})'.format(entity, skill) for skill in self.hobbies]
+
+        return '\n'.join(output_list)
