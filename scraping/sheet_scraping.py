@@ -80,8 +80,21 @@ def main():
     # create Person objects for each person with their responses
     people = [create_person(header_lookup, person_data) for person_data in rows]
 
+    # create and export krf file
+    file_output = '\n'.join(['(in-microtheory KRR-Winter2019FactsMt)',
+                             '(genlMt KRR-Winter2019FactsMt SocialModelingMt)',
+                             '(genlMt KRR-Winter2019FactsMt NUPeopleLanguageInfoMt)',
+                             '(genlMt KRR-Winter2019InClassMt KRR-Winter2019FactsMt)',
+                             '(genlMt KRR-Winter2019RulesMt KRR-Winter2019FactsMt)'])
+
+    file_output += '\n\n'
+
     for person in people:
-        print(str(person))
+        file_output += person.generate_krf() + '\n\n'
+
+    file = open('../krf/people.krf', 'w')
+    file.write(file_output)
+    file.close()
 
 
 if __name__ == '__main__':
