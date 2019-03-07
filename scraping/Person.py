@@ -174,8 +174,12 @@ class Person(object):
         }
         return str(output_dict)
 
-    # TODO
     def generate_krf(self):
+        """
+        Generates the krf output for this Person to be used with Companion.
+
+        :return: (string) krf output that ontologizes all information about this Person.
+        """
         output_list = []
 
         # create entity

@@ -1,8 +1,4 @@
-(in-microtheory KRR-Winter2019FactsMt)
-(genlMt KRR-Winter2019FactsMt SocialModelingMt)
-(genlMt KRR-Winter2019InClassMt KRR-Winter2019FactsMt)
-(genlMt KRR-Winter2019RulesMt KRR-Winter2019FactsMt)
-
+;;; Krf file for query definitions
 ;;;(similarNUPerson ?person ?suggestedPerson)
 (isa similarNUPerson Predicate)
 (arity similarNUPerson 2)

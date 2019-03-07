@@ -1,7 +1,6 @@
 import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from operator import itemgetter
 
 from Person import Person
 
@@ -58,7 +57,12 @@ def create_person(field_lookup, data):
                   data[field_lookup['hobbies']])
 
 
-def main():
+def generate_krf_file_for_sheet_data():
+    """
+    Generates and saves a krf file of data pulled from Google Sheets.
+
+    :return: None
+    """
     sheet_url = os.environ['SHEET_URL']
     header, rows = pull_from_google(sheet_url)
 
@@ -81,21 +85,11 @@ def main():
     people = [create_person(header_lookup, person_data) for person_data in rows]
 
     # create and export krf file
-    file_output = '\n'.join(['(in-microtheory KRR-Winter2019FactsMt)',
-                             '(genlMt KRR-Winter2019FactsMt SocialModelingMt)',
-                             '(genlMt KRR-Winter2019FactsMt NUPeopleLanguageInfoMt)',
-                             '(genlMt KRR-Winter2019InClassMt KRR-Winter2019FactsMt)',
-                             '(genlMt KRR-Winter2019RulesMt KRR-Winter2019FactsMt)'])
-
-    file_output += '\n\n'
+    output_file_content = ''
 
     for person in people:
-        file_output += person.generate_krf() + '\n\n'
+        output_file_content += person.generate_krf() + '\n\n'
 
-    file = open('../krf/people.krf', 'w')
-    file.write(file_output)
-    file.close()
-
-
-if __name__ == '__main__':
-    main()
+    output_file = open('../krf/people.krf', 'w')
+    output_file.write(output_file_content)
+    output_file.close()

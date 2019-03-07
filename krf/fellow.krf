@@ -1,3 +1,208 @@
+(in-microtheory KRR-Winter2019FactsMt)
+(genlMt KRR-Winter2019FactsMt SocialModelingMt)
+(genlMt KRR-Winter2019FactsMt NUPeopleLanguageInfoMt)
+(genlMt KRR-Winter2019InClassMt KRR-Winter2019FactsMt)
+(genlMt KRR-Winter2019RulesMt KRR-Winter2019FactsMt)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; FACTS ;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Krf file for adding new entities to existing collection, defining new collections, and defining new relations.
+;;; FieldOfStudy (existing collection)
+(isa Analytics FieldOfStudy)
+
+;;; FieldOfInterest (creating new first order collection)
+(isa FieldOfInterest FirstOrderCollection)
+(genls FieldOfInterest AspatialInformationStore)
+(genls FieldOfInterest Region-Underspecified)
+(comment FieldOfInterest "Each instance of FieldOfInterest is a particular area of academic interest.")
+(isa ArtificialIntelligence FieldOfInterest)
+(isa MachineLearning FieldOfInterest)
+(isa HumanComputerInteraction FieldOfInterest)
+(isa ComputerVision FieldOfInterest)
+(isa GameDevelopment FieldOfInterest)
+(isa Graphics FieldOfInterest)
+(isa Robotics FieldOfInterest)
+(isa Networking FieldOfInterest)
+(isa ComputerScienceSystems FieldOfInterest)
+(isa ComputerScienceTheory FieldOfInterest)
+
+
+;;; academicInterest (creating new relation)
+;;; Usage: (academicInterest ?student FieldOfInterest)
+(isa academicInterest Predicate)
+(arg1Isa academicInterest IntelligentAgent)
+(arg2Isa academicInterest FieldOfInterest)
+(comment academicInterest "(academicInterest ?student FieldOfInterest) says that ?student is interested in a certain field")
+
+;;; PersonTypeByOccupation (existing collection)
+(isa ProjectManager PersonTypeByOccupation)
+(isa PostDoc PersonTypeByOccupation)
+(isa Faculty PersonTypeByOccupation)
+(isa IndustryResearch PersonTypeByOccupation)
+
+;;; hasFutureCareer (creating new relation)
+(isa hasFutureCareer Predicate)
+(arg1Isa hasFutureCareer IntelligentAgent)
+(arg2Isa hasFutureCareer PersonTypeByOccupation)
+(comment hasFutureGoal "(hasFutureGoal ?student ?occupation) says that ?student is interested in a post-grad goal of ?occupation")
+
+;;; SoftwareSpecialty (creating new first order collection)
+(isa SoftwareSpecialty FirstOrderCollection)
+(isa BackendWeb SoftwareSpecialty)
+(isa FrontendWeb SoftwareSpecialty)
+(isa GameDevelopment SoftwareSpecialty)
+(isa iOSDevelopment SoftwareSpecialty)
+(isa AndroidDevelopment SoftwareSpecialty)
+(isa DataScience SoftwareSpecialty)
+(isa Hardware SoftwareSpecialty)
+
+;;; isExperiencedWith (creating new relation)
+;;; Usage: (isExperiencedWith ?student SoftwareSpecialty)
+(isa isExperiencedWith Predicate)
+(arg1Isa isExperiencedWith IntelligentAgent)
+(arg2Isa isExperiencedWith SoftwareSpecialty)
+(comment isExperiencedWith SoftwareSpecialty "(isExperiencedWith ?student SoftwareSpecialty) says that ?student has experience with a certain software")
+
+;;; HobbyActivity (existing second order collection)
+(isa Sports HobbyActivity)
+(isa Movies HobbyActivity)
+(isa Traveling HobbyActivity)
+(isa Art HobbyActivity)
+(isa Music HobbyActivity)
+(isa Food HobbyActivity)
+(isa Hackathons HobbyActivity)
+
+;;; enjoysHobby (creating new relation)
+;;; Usage: (enjoysHobby ?student HobbyActivity)
+(isa enjoysHobby Predicate)
+(arg1Isa  enjoysHobby IntelligentAgent)
+(arg2Isa  enjoysHobby HobbyActivity)
+(comment enjoysHobby "(enjoysHobby ?student ?hobby) says that ?student enjoys ?hobby")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;; QUERY DEFINITIONS ;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Krf file for query definitions
+;;;(similarNUPerson ?person ?suggestedPerson)
+(isa similarNUPerson Predicate)
+(arity similarNUPerson 2)
+(arg1Isa similarNUPerson NUStudent)
+(arg2Isa similarNUPerson NUStudent)
+(comment similarNUPerson "(similarNUPerson ?person ?suggestedPerson) says that ?person and ?suggestPerson have similar academic and hobby interests.")
+
+;;;(sameAcademicProgram ?person ?suggestedPerson)
+(isa sameAcademicProgram Predicate)
+(arity sameAcademicProgram 2)
+(arg1Isa sameAcademicProgram NUStudent)
+(arg2Isa sameAcademicProgram NUStudent)
+(comment sameAcademicProgram "(sameAcademicProgram ?person ?suggestedPerson) says that ?person and ?suggestedPerson are in the same academic program.")
+
+;;;(sameAcademicYear ?person ?suggestedPerson)
+(isa sameAcademicYear Predicate)
+(arity sameAcademicYear 2)
+(arg1Isa sameAcademicYear NUStudent)
+(arg2Isa sameAcademicYear NUStudent)
+(comment sameAcademicYear "(sameAcademicYear ?person ?suggestedPerson) says that ?person and ?suggestPerson are in the same academic year.")
+
+;;;(sameMajorAndYear ?person ?suggestedPerson)
+(isa sameMajorAndYear Predicate)
+(arity sameMajorAndYear 2)
+(arg1Isa sameMajorAndYear NUStudent)
+(arg2Isa sameMajorAndYear NUStudent)
+(comment sameMajorAndYear "(sameMajorAndYear ?person ?suggestedPerson) says that ?person and ?suggestPerson are in the same academic year and have the same major.")
+
+;;;(sameFieldOfWork ?person ?suggestedPerson)
+(isa sameFieldOfWork Predicate)
+(arity sameFieldOfWork 2)
+(arg1Isa sameFieldOfWork NUStudent)
+(arg2Isa sameFieldOfWork NUStudent)
+(comment sameFieldOfWork "(sameFieldOfWork ?person ?suggestedPerson) says that ?person and ?suggestPerson have same field of work.")
+
+;;;(personExperiencedWith ?suggestedPerson ?program)
+(isa personExperiencedWith Predicate)
+(arity personExperiencedWith 2)
+(arg1Isa personExperiencedWith NUStudent)
+(arg2Isa personExperiencedWith SoftwareSpecialty)
+(comment personExperiencedWith "(personExperiencedWith ?suggestedPerson ?program) says that ?suggestPerson is experienced in ?program.")
+
+;;;(sameHobbies ?person ?suggestedPerson)
+(isa sameHobbies Predicate)
+(arity sameHobbies 2)
+(arg1Isa sameHobbies NUStudent)
+(arg2Isa sameHobbies NUStudent)
+(comment sameHobbies "(sameHobbies ?person ?suggestedPerson) says that ?person and ?suggestPerson have same hobbies.")
+
+;;;(interestingEvents ?person ?event)
+(isa interestingEvents Predicate)
+(arity interestingEvents 2)
+(arg1Isa interestingEvents NUStudent)
+(arg2Isa interestingEvents NUEvent)
+(comment interestingEvents "(interestingEvents ?person ?event) says that ?person might be interested in ?event.")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;; QUERIES ;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Krf file for query horn clauses
+;;; Who is similar to me? (General)
+;;; Query: (similarNUPerson USER ?suggestedPerson)
+(<== (similarNUPerson ?person ?suggestedPerson)
+  (academicInterests ?interests ?person)
+  ())
+
+;;; Who is in the same academic program as me?
+;;; Query: (sameAcademicProgram USER ?suggestedPerson)
+(<== (sameAcademicProgram ?person ?suggestedPerson)
+  (studies ?person ?major)
+  (studies ?suggestedPerson ?major)
+  (different ?person ?suggestedPerson))
+
+;;; Who is in the same academic year as me?
+;;; Query: (sameAcademicYear USER ?suggestedPerson)
+(<== (sameAcademicYear ?person ?suggestedPerson)
+  (isa ?person ?academicYear)
+  (isa ?suggestedPerson ?academicYear)
+  (different ?person ?suggestedPerson))
+
+;;; Who are other students with the same major and same academic year?
+;;; Query: (sameMajorAndYear USER ?suggestedPerson)
+(<== (sameMajorAndYear ?person ?suggestedPerson)
+  (sameAcademicProgram ?person ?suggestedPerson)
+  (sameAcademicYear ?person ?suggestedPerson)
+  (different ?person ?suggestedPerson))
+
+;;; Who will possibly go into the same field of work after graduation?
+;;; Query: (sameFieldOfWork USER ?suggestedPerson)
+(<== (sameFieldOfWork ?person ?suggestedPerson)
+  (hasFutureCareer ?person ?career)
+  (hasFutureCareer ?suggestedPerson ?career)
+  (different ?person ?suggestedPerson))
+
+;;; Who is specialized in program X?
+;;; Query: (personExperiencedWith ?suggestedPerson PROGRAM)
+(<== (personExperiencedWith ?suggestedPerson ?program)
+  (isExperiencedWith ?suggestedPerson ?program)
+  (different ?person ?suggestedPerson))
+
+;;; Who has the same hobbies as me in the same academic year?
+;;; Query: (sameHobbies ?person ?suggestedPerson)
+(<== (sameHobbies ?person ?suggestedPerson)
+  (sameAcademicYear ?person ?suggestedPerson)
+  (enjoysHobby ?person ?hobby)
+  (enjoysHobby ?suggestedPerson ?hobby)
+  (different ?person ?suggestedPerson))
+
+;;; What are some events on campus I would be interested in? (Based on Collection type of student)
+;;; Query: (interestingEvents USER ?event)
+(<== (interestingEvents ?person ?event)
+  (isa ?person academicYear)
+  (eventAudience ?event ?academicYear)
+  (different ?person ?suggestedPerson))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;; PEOPLE ;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (isa DestinyLivingston NUUndergraduate)
 (fullName DestinyLivingston "Destiny Livingston")
 (studies DestinyLivingston ComputerScience)

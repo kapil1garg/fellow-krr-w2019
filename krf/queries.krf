@@ -1,8 +1,4 @@
-(in-microtheory KRR-Winter2019FactsMt)
-(genlMt KRR-Winter2019FactsMt SocialModelingMt)
-(genlMt KRR-Winter2019InClassMt KRR-Winter2019FactsMt)
-(genlMt KRR-Winter2019RulesMt KRR-Winter2019FactsMt)
-
+;;; Krf file for query horn clauses
 ;;; Who is similar to me? (General)
 ;;; Query: (similarNUPerson USER ?suggestedPerson)
 (<== (similarNUPerson ?person ?suggestedPerson)
@@ -13,40 +9,47 @@
 ;;; Query: (sameAcademicProgram USER ?suggestedPerson)
 (<== (sameAcademicProgram ?person ?suggestedPerson)
   (studies ?person ?major)
-  (studies ?suggestedPerson ?major))
+  (studies ?suggestedPerson ?major)
+  (different ?person ?suggestedPerson))
 
 ;;; Who is in the same academic year as me?
 ;;; Query: (sameAcademicYear USER ?suggestedPerson)
 (<== (sameAcademicYear ?person ?suggestedPerson)
   (isa ?person ?academicYear)
-  (isa ?suggestedPerson ?academicYear))
+  (isa ?suggestedPerson ?academicYear)
+  (different ?person ?suggestedPerson))
 
 ;;; Who are other students with the same major and same academic year?
 ;;; Query: (sameMajorAndYear USER ?suggestedPerson)
 (<== (sameMajorAndYear ?person ?suggestedPerson)
   (sameAcademicProgram ?person ?suggestedPerson)
-  (sameAcademicYear ?person ?suggestedPerson))
+  (sameAcademicYear ?person ?suggestedPerson)
+  (different ?person ?suggestedPerson))
 
 ;;; Who will possibly go into the same field of work after graduation?
 ;;; Query: (sameFieldOfWork USER ?suggestedPerson)
 (<== (sameFieldOfWork ?person ?suggestedPerson)
   (hasFutureCareer ?person ?career)
-  (hasFutureCareer ?suggestedPerson ?career))
+  (hasFutureCareer ?suggestedPerson ?career)
+  (different ?person ?suggestedPerson))
 
 ;;; Who is specialized in program X?
 ;;; Query: (personExperiencedWith ?suggestedPerson PROGRAM)
 (<== (personExperiencedWith ?suggestedPerson ?program)
-  (isExperiencedWith ?suggestedPerson ?program))
+  (isExperiencedWith ?suggestedPerson ?program)
+  (different ?person ?suggestedPerson))
 
 ;;; Who has the same hobbies as me in the same academic year?
 ;;; Query: (sameHobbies ?person ?suggestedPerson)
 (<== (sameHobbies ?person ?suggestedPerson)
   (sameAcademicYear ?person ?suggestedPerson)
   (enjoysHobby ?person ?hobby)
-  (enjoysHobby ?suggestedPerson ?hobby))
+  (enjoysHobby ?suggestedPerson ?hobby)
+  (different ?person ?suggestedPerson))
 
 ;;; What are some events on campus I would be interested in? (Based on Collection type of student)
 ;;; Query: (interestingEvents USER ?event)
 (<== (interestingEvents ?person ?event)
   (isa ?person academicYear)
-  (eventAudience ?event ?academicYear))
+  (eventAudience ?event ?academicYear)
+  (different ?person ?suggestedPerson))
