@@ -1,6 +1,3 @@
-Things to add:
-  - (academicYear ?person NUUndergradStudent) or (academicYear ?person NUUndergradSenior)
-
 
 ;;; Who is similar to me? (General)
 ;;; Query: (similarNUPerson USER ?suggestedPerson)
@@ -17,8 +14,8 @@ Things to add:
 ;;; Who is in the same academic year as me?
 ;;; Query: (sameAcademicYear USER ?suggestedPerson)
 (<== (sameAcademicYear ?person ?suggestedPerson)
-  (academicYear ?person ?year)
-  (academicYear ?suggestedPerson ?year))
+  (isa ?person ?academicYear)
+  (isa ?suggestedPerson ?academicYear))
 
 ;;; Who are other students with the same major and same academic year?
 ;;; Query: (sameMajorAndYear USER ?suggestedPerson)
@@ -44,15 +41,8 @@ Things to add:
   (enjoysHobby ?person ?hobby)
   (enjoysHobby ?suggestedPerson ?hobby))
 
-;;; Who is also new to Northwestern?
-;;; Query: (newToNU ?suggestedPerson)
-(<== (newToNU ?suggestedPerson)
-  (academicYear ?suggestedPerson NUUndergradFreshman))
-  ;;; OR
-  (isa ?suggestedPerson NUUndergradFreshman)
-
 ;;; What are some events on campus I would be interested in? (Based on Collection type of student)
-;;; Query: (interestingEvents ?event USER)
-(<== (interestingEvents ?event ?person)
-  (eventAudience ?event ?studentType)
-  (isa ?person ?studentType))
+;;; Query: (interestingEvents USER ?event)
+(<== (interestingEvents ?person ?event)
+  (isa ?person academicYear)
+  (eventAudience ?event ?academicYear))
