@@ -69,7 +69,7 @@
   ;;; Who has the same hobbies as me who is specialized in program X?
 ;;; Query: (sameHobbiesWithExperienceIn ?person ?suggestedPerson)
 (<== (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
-  (sameHobbies ?person ?suggestedPerson ?program)
+  (sameHobbies ?person ?suggestedPerson)
   (isExperiencedWith ?suggestedPerson ?program)
   (different ?person ?suggestedPerson))
 
