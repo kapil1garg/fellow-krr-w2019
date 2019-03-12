@@ -59,6 +59,13 @@
   (isa ?person ?academicYear)
   (eventAudience ?event ?academicYear))
 
+;;; Who has the same hobbies as me Who will possibly go into the same field of work after graduation?
+;;; Query: (sameHobbies ?person ?suggestedPerson)
+(<== (sameFieldOfWork ?person ?suggestedPerson)
+  (enjoysHobby ?person ?hobby)
+  (enjoysHobby ?suggestedPerson ?hobby)
+  (different ?person ?suggestedPerson))
+
 ;;; What are some free events on campus I would be interested in? (Based on Collection type of student)
 ;;; Query: (interestingFreeEvents USER ?event)
 (<== (interestingFreeEvents ?person ?event)
