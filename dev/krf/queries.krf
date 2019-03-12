@@ -1,10 +1,4 @@
 ;;; Krf file for query horn clauses
-;;; Who is similar to me? (General)
-;;; Query: (similarNUPerson USER ?suggestedPerson)
-(<== (similarNUPerson ?person ?suggestedPerson)
-  (academicInterests ?interests ?person)
-  ())
-
 ;;; Who is in the same academic program as me?
 ;;; Query: (sameAcademicProgram USER ?suggestedPerson)
 (<== (sameAcademicProgram ?person ?suggestedPerson)
@@ -36,20 +30,62 @@
 ;;; Who is specialized in program X?
 ;;; Query: (personExperiencedWith ?suggestedPerson PROGRAM)
 (<== (personExperiencedWith ?suggestedPerson ?program)
+  (isExperiencedWith ?suggestedPerson ?program))
+
+;;; Who has the same software experience as me?
+;;; Query: (sameSoftwareExperience USER ?suggestedPerson)
+(<== (sameSoftwareExperience ?person ?suggestedPerson)
+  (isExperiencedWith ?person ?program)
   (isExperiencedWith ?suggestedPerson ?program)
   (different ?person ?suggestedPerson))
 
-;;; Who has the same hobbies as me in the same academic year?
+;;; Who has the same hobbies as me?
 ;;; Query: (sameHobbies ?person ?suggestedPerson)
 (<== (sameHobbies ?person ?suggestedPerson)
-  (sameAcademicYear ?person ?suggestedPerson)
   (enjoysHobby ?person ?hobby)
   (enjoysHobby ?suggestedPerson ?hobby)
+  (different ?person ?suggestedPerson))
+
+;;; Who has the same hobbies as me in the same academic year?
+;;; Query: (sameHobbiesAndYear ?person ?suggestedPerson)
+(<== (sameHobbiesAndYear ?person ?suggestedPerson)
+  (sameAcademicYear ?person ?suggestedPerson)
+  (sameHobbies ?person ?suggestedPerson)
   (different ?person ?suggestedPerson))
 
 ;;; What are some events on campus I would be interested in? (Based on Collection type of student)
 ;;; Query: (interestingEvents USER ?event)
 (<== (interestingEvents ?person ?event)
-  (isa ?person academicYear)
+  (isa ?person ?academicYear)
+  (eventAudience ?event ?academicYear))
+
+;;; What are some free events on campus I would be interested in? (Based on Collection type of student)
+;;; Query: (interestingFreeEvents USER ?event)
+(<== (interestingFreeEvents ?person ?event)
+  (isa ?person ?academicYear)
   (eventAudience ?event ?academicYear)
+  (eventCost ?event "Free"))
+
+;;; Who can I contact for interesting events on campus? (Based on Collection type of student)
+;;; Query: (interestingEventsContact USER ?event ?contact)
+(<== (interestingEventsContact ?person ?event ?contact)
+  (isa ?person ?academicYear)
+  (eventAudience ?event ?academicYear)
+  (eventHostContact ?event ?contact))
+
+;;; Who has the same academic interests?
+;;; Query: (sameAcademicInterests USER ?suggestedPerson)
+(<== (sameAcademicInterests ?person ?suggestedPerson)
+  (academicInterest ?person ?interest)
+  (academicInterest ?suggestedPerson ?interest)
+  (different ?person ?suggestedPerson))
+
+;;; Who is similar to me? (General)
+;;; Query: (similarNUPerson USER ?suggestedPerson)
+(<== (similarNUPerson ?person ?suggestedPerson)
+  (sameMajorAndYear ?person ?suggestedPerson)
+  (sameFieldOfWork ?person ?suggestedPerson)
+  (sameSoftwareExperience ?person ?suggestedPerson)
+  (sameAcademicInterests ?person ?suggestedPerson)
+  (sameHobbies ?person ?suggestedPerson)
   (different ?person ?suggestedPerson))

@@ -1,0 +1,29 @@
+;;; Also tests for sameAcademicProgram and sameAcademicYear queries
+(sameMajorAndYear DestinyLivingston ?suggestedPerson)
+
+;;; sameFieldOfWork
+(sameFieldOfWork DestinyLivingston ?suggestedPerson)
+
+;;; personExperiencedWith
+(personExperiencedWith ?suggestedPerson GameDevelopment)
+
+;;; sameSoftwareExperience
+(sameSoftwareExperience DestinyLivingston ?suggestedPerson)
+
+;;; sameHobbies
+(sameHobbies DestinyLivingston ?suggestedPerson)
+
+;;; interestingEvents (note: run inside EverythingPSC)
+(interestingEvents DestinyLivingston ?event)
+
+;;; interestingFreeEvents
+(interestingFreeEvents DestinyLivingston ?event)
+
+;;; interestingEventsContact
+(interestingEventsContact DestinyLivingston ?event ?contact)
+
+;;; sameAcademicInterests
+(sameAcademicInterests DestinyLivingston ?suggestedPerson)
+
+;;; similarNUPerson (this tests almost everything)
+(similarNUPerson USER ?suggestedPerson)
