@@ -62,6 +62,20 @@
 (arg2Isa sameHobbiesAndYear NUStudent)
 (comment sameHobbiesAndYear "(sameHobbiesAndYear ?person ?suggestedPerson) says that ?person and ?suggestedPerson are in the same year and have same hobbies.")
 
+;;;(sameHobbiesAndField ?person ?suggestedPerson)
+(isa sameHobbiesAndField Predicate)
+(arity sameHobbiesAndYear 2)
+(arg1Isa sameHobbiesAndYear NUStudent)
+(arg2Isa sameHobbiesAndYear NUStudent)
+(comment sameHobbiesAndField "(sameHobbiesAndField ?person ?suggestedPerson) says that ?person and ?suggestedPerson are in the same field and have same hobbies.")
+
+;;;(sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
+(isa sameHobbiesWithExperienceIn Predicate)
+(arity sameHobbiesWithExperienceIn 2)
+(arg1Isa sameHobbiesWithExperienceIn NUStudent)
+(arg2Isa sameHobbiesWithExperienceIn NUStudent)
+(comment sameHobbiesWithExperienceIn "(sameHobbiesWithExperienceIn ?person ?suggestedPerson) says that ?person and ?suggestedPerson have the same hobbies and ?suggestedPerson has software experience ?program.")
+
 ;;;(interestingEvents ?person ?event)
 (isa interestingEvents Predicate)
 (arity interestingEvents 2)
