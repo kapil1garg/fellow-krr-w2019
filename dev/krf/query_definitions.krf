@@ -74,7 +74,8 @@
 (arity sameHobbiesWithExperienceIn 2)
 (arg1Isa sameHobbiesWithExperienceIn NUStudent)
 (arg2Isa sameHobbiesWithExperienceIn NUStudent)
-(comment sameHobbiesWithExperienceIn "(sameHobbiesWithExperienceIn ?person ?suggestedPerson) says that ?person and ?suggestedPerson have the same hobbies and ?suggestedPerson has software experience ?program.")
+(arg3Isa sameHobbiesWithExperienceIn SoftwareSpecialty)
+(comment sameHobbiesWithExperienceIn "(sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program) says that ?person and ?suggestedPerson have the same hobbies and ?suggestedPerson has software experience ?program.")
 
 ;;;(interestingEvents ?person ?event)
 (isa interestingEvents Predicate)
