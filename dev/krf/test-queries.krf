@@ -27,3 +27,6 @@
 
 ;;; similarNUPerson (this tests almost everything)
 (similarNUPerson USER ?suggestedPerson)
+
+;; customQuery
+(customQuery sameAcademicInterests sameHobbies DestinyLivingston ?suggestedPerson)

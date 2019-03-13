@@ -28,7 +28,6 @@
 (isa ComputerScienceSystems FieldOfInterest)
 (isa ComputerScienceTheory FieldOfInterest)
 
-
 ;;; academicInterest (creating new relation)
 ;;; Usage: (academicInterest ?student FieldOfInterest)
 (isa academicInterest Predicate)
@@ -177,6 +176,15 @@
 (arg2Isa sameAcademicInterests NUStudent)
 (comment sameAcademicInterests "(sameAcademicInterests ?person ?suggestedPerson) says that ?person and ?suggestedPerson have same academic interests.")
 
+;;; (customQuery ?query1 ?query2 ?person ?suggestedPerson)
+(isa customQuery Predicate)
+(arity customQuery 4)
+(arg1Isa customQuery Predicate)
+(arg2Isa customQuery Predicate)
+(arg3Isa customQuery NUStudent)
+(arg4Isa customQuery NUStudent)
+(comment customQuery "(customQuery ?query1 ?query2 ?person ?suggestedPerson) returns the suggestedPerson that matches on ?query1 and ?query2")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;; QUERIES ;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -272,6 +280,12 @@
   (sameAcademicInterests ?person ?suggestedPerson)
   (sameHobbies ?person ?suggestedPerson)
   (different ?person ?suggestedPerson))
+
+;;; Custom Query
+;;; Query: (customQuery sameAcademicInterests sameHobbies USER ?suggestedPerson)
+(<== (customQuery ?query1 ?query2 ?person ?suggestedPerson)
+  (?query1 ?person ?suggestedPerson)
+  (?query2 ?person ?suggestedPerson))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;; PEOPLE ;;;;;;;;;;;;;;;
