@@ -375,7 +375,7 @@
 
 (isa YunusMcdougall NUUndergraduate)
 (fullName YunusMcdougall "Yunus Mcdougall")
-(studies YunusMcdougall ComputerScience)
+(studies YunusMcdougall CognitiveScience)
 (academicInterest YunusMcdougall ArtificialIntelligence)
 (academicInterest YunusMcdougall MachineLearning)
 (academicInterest YunusMcdougall ComputerVision)

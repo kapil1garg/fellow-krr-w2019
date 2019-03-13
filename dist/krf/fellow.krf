@@ -28,6 +28,7 @@
 (isa ComputerScienceSystems FieldOfInterest)
 (isa ComputerScienceTheory FieldOfInterest)
 
+
 ;;; academicInterest (creating new relation)
 ;;; Usage: (academicInterest ?student FieldOfInterest)
 (isa academicInterest Predicate)
@@ -225,7 +226,6 @@
 ;;;;;;;;;;;;;; QUERIES ;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Krf file for query horn clauses
-
 ;;; Who is in the same academic program as me?
 ;;; Query: (sameAcademicProgram USER ?suggestedPerson)
 (<== (sameAcademicProgram ?person ?suggestedPerson)
@@ -324,7 +324,7 @@
   (sameHobbies ?person ?suggestedPerson)
   (different ?person ?suggestedPerson))
 
-;;; Who has the same hobbies as me who is specialized in program X?
+  ;;; Who has the same hobbies as me who is specialized in program X?
 ;;; Query: (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
 (<== (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
   (sameHobbies ?person ?suggestedPerson)
@@ -729,7 +729,7 @@
 
 (isa YunusMcdougall NUUndergraduate)
 (fullName YunusMcdougall "Yunus Mcdougall")
-(studies YunusMcdougall ComputerScience)
+(studies YunusMcdougall CognitiveScience)
 (academicInterest YunusMcdougall ArtificialIntelligence)
 (academicInterest YunusMcdougall MachineLearning)
 (academicInterest YunusMcdougall ComputerVision)
@@ -756,3 +756,4 @@
 (enjoysHobby NeelAkhtar Art)
 (enjoysHobby NeelAkhtar Music)
 (enjoysHobby NeelAkhtar Food)
+
