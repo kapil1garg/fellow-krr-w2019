@@ -25,7 +25,87 @@ We use [pipenv](https://github.com/pypa/pipenv) for managing package dependencie
 This should output students that have the same academic year as Destiny Livingston.
 
 ## Available Queries
-Feel free to test more of the available queries and compose custom ones by checking out the documentation in `dist/docs/public.html`.
+Feel free to test more of the available queries and compose custom ones.
+
+Who is in the same academic program as me?
+```
+(sameAcademicProgram ?person ?suggestedPerson)
+```
+Example Query: `(sameAcademicProgram DestinyLivingston ?suggestedPerson)`
+
+Who is in the same academic year as me?
+```
+(sameAcademicYear ?person ?suggestedPerson)
+```
+Example Query: `(sameAcademicYear DestinyLivingston ?suggestedPerson)`
+
+Who is in the same field of work as me?
+```
+(sameFieldOfWork ?person ?suggestedPerson)
+```
+Example Query: `(sameFieldOfWork DestinyLivingston ?suggestedPerson)`
+
+Who has the same software experience as me?
+```
+(sameSoftwareExperience ?person ?suggestedPerson)
+```
+Example Query: `(sameSoftwareExperience DestinyLivingston ?suggestedPerson)`
+
+Who has the same academic interests as me?
+```
+(sameAcademicInterests ?person ?suggestedPerson)
+```
+Example Query: `(sameAcademicInterests DestinyLivingston ?suggestedPerson)`
+
+Who has the same hobbies as me?
+```
+(sameHobbies ?person ?suggestedPerson)
+```
+Example Query: `(sameHobbies DestinyLivingston ?suggestedPerson)`
+
+What are some interesting events that would be related to me?
+```
+(interestingEvents ?person ?event)
+```
+Example Query: `(interestingEvents DestinyLivingston ?event)`
+
+Who is someone who is experienced in a specific software?
+```
+(personExperiencedWith ?suggestedPerson ?program)
+```
+Example Query: (personExperiencedWith ?suggestedPerson GameDevelopment)
+
+Who is similar to me?
+```
+(similarNUPerson ?person ?suggestedPerson)
+```
+Example Query: (similarNUPerson DestinyLivingston ?suggestedPerson)
+
+The queries below are compositions of the basic queries listed above:
+```
+(sameHobbiesAndYear ?person ?suggestedPerson)
+```
+```
+(sameMajorAndYear ?person ?suggestedPerson)
+```
+```
+(sameHobbiesAndField ?person ?suggestedPerson)
+```
+```
+(sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
+```
+
+These are custom queries that can be used to run any combination of simpler queries.
+Example Query: `(customQuery2 sameAcademicInterests sameHobbies DestinyLivingston ?suggestedPerson)`
+```
+(customQuery2 ?query1 ?query2 ?person ?suggestedPerson)
+```
+```
+(customQuery3 ?query1 ?query2 ?query3 ?person ?suggestedPerson)
+```
+```
+(customQuery4 ?query1 ?query2 ?query3 ?query4 ?person ?suggestedPerson)
+```
 
 ## Customizing and Adding More Data
 1. If you want to create a new entity representing a NU student in the knowledge base, please check `dev/krf/people.krf`
