@@ -59,20 +59,6 @@
   (isa ?person ?academicYear)
   (eventAudience ?event ?academicYear))
 
-;;; Who has the same hobbies as me Who will possibly go into the same field of work after graduation?
-;;; Query: (sameHobbiesAndField ?person ?suggestedPerson)
-(<== (sameHobbiesAndField ?person ?suggestedPerson)
-  (sameFieldOfWork ?person ?suggestedPerson)
-  (sameHobbies ?person ?suggestedPerson)
-  (different ?person ?suggestedPerson))
-
-  ;;; Who has the same hobbies as me who is specialized in program X?
-;;; Query: (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
-(<== (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
-  (sameHobbies ?person ?suggestedPerson)
-  (isExperiencedWith ?suggestedPerson ?program)
-  (different ?person ?suggestedPerson))
-
 ;;; What are some free events on campus I would be interested in? (Based on Collection type of student)
 ;;; Query: (interestingFreeEvents USER ?event)
 (<== (interestingFreeEvents ?person ?event)
@@ -103,3 +89,35 @@
   (sameAcademicInterests ?person ?suggestedPerson)
   (sameHobbies ?person ?suggestedPerson)
   (different ?person ?suggestedPerson))
+
+;;; Who has the same hobbies as me Who will possibly go into the same field of work after graduation?
+;;; Query: (sameHobbiesAndField ?person ?suggestedPerson)
+(<== (sameHobbiesAndField ?person ?suggestedPerson)
+  (sameFieldOfWork ?person ?suggestedPerson)
+  (sameHobbies ?person ?suggestedPerson)
+  (different ?person ?suggestedPerson))
+
+  ;;; Who has the same hobbies as me who is specialized in program X?
+;;; Query: (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
+(<== (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
+  (sameHobbies ?person ?suggestedPerson)
+  (isExperiencedWith ?suggestedPerson ?program)
+  (different ?person ?suggestedPerson))
+
+;;; Query: (customQuery2 sameAcademicInterests sameHobbies USER ?suggestedPerson)
+(<== (customQuery2 ?query1 ?query2 ?person ?suggestedPerson)
+  (?query1 ?person ?suggestedPerson)
+  (?query2 ?person ?suggestedPerson))
+
+;;; Query: (customQuery3 sameAcademicInterests sameHobbies sameAcademicYear USER ?suggestedPerson)
+(<== (customQuery3 ?query1 ?query2 ?query3 ?person ?suggestedPerson)
+  (?query1 ?person ?suggestedPerson)
+  (?query2 ?person ?suggestedPerson)
+  (?query3 ?person ?suggestedPerson))
+
+;;; Query: (customQuery4 sameAcademicInterests sameHobbies sameAcademicYear sameAcademicProgram USER ?suggestedPerson)
+(<== (customQuery4 ?query1 ?query2 ?query3 ?query4 ?person ?suggestedPerson)
+  (?query1 ?person ?suggestedPerson)
+  (?query2 ?person ?suggestedPerson)
+  (?query3 ?person ?suggestedPerson)
+  (?query4 ?person ?suggestedPerson))

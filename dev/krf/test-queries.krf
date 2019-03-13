@@ -13,6 +13,9 @@
 ;;; sameHobbies
 (sameHobbies DestinyLivingston ?suggestedPerson)
 
+;;; sameHobbiesAndYear
+(sameHobbiesAndYear DestinyLivingston ?suggestedPerson)
+
 ;;; interestingEvents (note: run inside EverythingPSC)
 (interestingEvents DestinyLivingston ?event)
 
@@ -26,7 +29,19 @@
 (sameAcademicInterests DestinyLivingston ?suggestedPerson)
 
 ;;; similarNUPerson (this tests almost everything)
-(similarNUPerson USER ?suggestedPerson)
+(similarNUPerson DestinyLivingston ?suggestedPerson)
 
-;; customQuery
-(customQuery sameAcademicInterests sameHobbies DestinyLivingston ?suggestedPerson)
+;;; sameHobbiesAndField
+(sameHobbiesAndField DestinyLivingston ?suggestedPerson)
+
+;;; sameHobbiesWithExperienceIn
+(sameHobbiesWithExperienceIn DestinyLivingston ?suggestedPerson GameDevelopment)
+
+;;; customQuery2
+(customQuery2 sameAcademicInterests sameHobbies DestinyLivingston ?suggestedPerson)
+
+;;; customQuery3
+(customQuery3 sameAcademicInterests sameHobbies sameAcademicYear DestinyLivingston ?suggestedPerson)
+
+;;; customQuery4
+(customQuery4 sameAcademicInterests sameHobbies sameAcademicYear sameAcademicProgram DestinyLivingston ?suggestedPerson)
