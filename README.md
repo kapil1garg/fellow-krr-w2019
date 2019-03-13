@@ -27,61 +27,61 @@ This should output students that have the same academic year as Destiny Livingst
 ## Available Queries
 Feel free to test more of the available queries and compose custom ones.
 
-# Who is in the same academic program as me?
+### Who is in the same academic program as me?
 ```
 (sameAcademicProgram ?person ?suggestedPerson)
 ```
 Example Query: `(sameAcademicProgram DestinyLivingston ?suggestedPerson)`
 
-# Who is in the same academic year as me?
+### Who is in the same academic year as me?
 ```
 (sameAcademicYear ?person ?suggestedPerson)
 ```
 Example Query: `(sameAcademicYear DestinyLivingston ?suggestedPerson)`
 
-# Who is in the same field of work as me?
+### Who is in the same field of work as me?
 ```
 (sameFieldOfWork ?person ?suggestedPerson)
 ```
 Example Query: `(sameFieldOfWork DestinyLivingston ?suggestedPerson)`
 
-# Who has the same software experience as me?
+### Who has the same software experience as me?
 ```
 (sameSoftwareExperience ?person ?suggestedPerson)
 ```
 Example Query: `(sameSoftwareExperience DestinyLivingston ?suggestedPerson)`
 
-# Who has the same academic interests as me?
+### Who has the same academic interests as me?
 ```
 (sameAcademicInterests ?person ?suggestedPerson)
 ```
 Example Query: `(sameAcademicInterests DestinyLivingston ?suggestedPerson)`
 
-# Who has the same hobbies as me?
+### Who has the same hobbies as me?
 ```
 (sameHobbies ?person ?suggestedPerson)
 ```
 Example Query: `(sameHobbies DestinyLivingston ?suggestedPerson)`
 
-# What are some interesting events that would be related to me?
+### What are some interesting events that would be related to me?
 ```
 (interestingEvents ?person ?event)
 ```
 Example Query: `(interestingEvents DestinyLivingston ?event)`
 
-# Who is someone who is experienced in a specific software?
+### Who is someone who is experienced in a specific software?
 ```
 (personExperiencedWith ?suggestedPerson ?program)
 ```
 Example Query: (personExperiencedWith ?suggestedPerson GameDevelopment)
 
-# Who is similar to me?
+### Who is similar to me?
 ```
 (similarNUPerson ?person ?suggestedPerson)
 ```
 Example Query: (similarNUPerson DestinyLivingston ?suggestedPerson)
 
-# The queries below are compositions of the basic queries listed above:
+### The queries below are compositions of the basic queries listed above:
 ```
 (sameHobbiesAndYear ?person ?suggestedPerson)
 ```
@@ -95,7 +95,7 @@ Example Query: (similarNUPerson DestinyLivingston ?suggestedPerson)
 (sameHobbiesWithExperienceIn ?person ?suggestedPerson ?program)
 ```
 
-# These are custom queries that can be used to run any combination of simpler queries.
+### These are custom queries that can be used to run any combination of simpler queries.
 Example Query: `(customQuery2 sameAcademicInterests sameHobbies DestinyLivingston ?suggestedPerson)`
 ```
 (customQuery2 ?query1 ?query2 ?person ?suggestedPerson)
