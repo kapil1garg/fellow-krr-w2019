@@ -36,7 +36,7 @@ SHEET_URL=YOUR_GOOGLE_SPREADSHEET_URL
 ```
 (sameAcademicYear DestinyLivingston ?suggestedPerson)
 ```
-This should output students that have the same academic year as Destiny Livingston.
+This should output students that have the same academic year as Destiny Livingston. **Note**: you must run the queries using the `KRR-Winter2019FactsMt` microtheory.
 
 ## Available Queries
 Feel free to test more of the available queries and compose custom ones.
