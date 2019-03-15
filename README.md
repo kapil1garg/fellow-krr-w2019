@@ -5,6 +5,24 @@ Fellow creates a querying and reasoning structure that allows students to find o
 
 _Note:_ the current repository already contains the final generated KRF file in `dist/krf/fellow.krf`. To load it and run it in Companion, feel free to skip to the section [Running Companion](#running-companion).
 
+## Directory Structure
+```
+├── dev (development code)
+│   ├── krf (intermediate krf files)
+│   │   ├── facts.krf (defines entities, collections, and relations)
+│   │   ├── people.krf (defines people entities scraped from survey)
+│   │   ├── queries.krf (defines horn clauses for queries)
+│   │   ├── query_definitions.krf (defines queries)
+│   │   └── test-queries.krf (some included test queries to play with)
+│   └── scraping
+│       ├── Person.py (model for a Person)
+│       ├── generate_krf.py (generates the combined dist/krf/fellow.krf file using the intermediate krf files)
+│       └── sheet_scraping.py (generates the dev/people.krf by scraping the Google Sheet survey responses)
+└── dist (distribution code)
+    └── krf
+        └── fellow.krf (combined krf file to use with Companions)
+```
+
 ## Setup
 ### Pipenv
 We use [pipenv](https://github.com/pypa/pipenv) for managing package dependencies.
